@@ -1,6 +1,6 @@
 /* Terminal aesthetic styling */
+
 body {
-  position: relative;
   background-color: #18181b;
   color: #f1f0ef;
   font-family: Courier, Lucida Sans Typewriter, Lucida Typewriter, monospace;
@@ -13,7 +13,7 @@ body {
 
 /* Language Switch */
 .language-switch {
-  position: fixed;
+  position: absolute;
   top: 20px;
   right: 20px;
   z-index: 1000;
@@ -93,7 +93,7 @@ select {
   border: 1px solid #f1f0ef;
   padding: 8px 15px;
   margin: 5px 0;
-  font-family: "Courier New", monospace;
+  font-family: Courier, Lucida Sans Typewriter, Lucida Typewriter, monospace;
 }
 
 button {
@@ -224,125 +224,4 @@ footer {
 
 footer a {
   color: #991f36;
-}
-
-/* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {
-  body {
-    font-size: 1rem;
-    padding: 10px;
-  }
-
-  .container {
-    padding: 10px;
-  }
-
-  .language-switch {
-    top: 10px;
-    right: 10px;
-  }
-
-  .lang-button {
-    padding: 3px 6px;
-    font-size: 0.8em;
-  }
-
-  h1 {
-    font-size: 1.6rem;
-  }
-
-  h2,
-  h3 {
-    font-size: 1.2rem;
-  }
-
-  .game-panel {
-    height: 400px;
-    padding: 10px;
-  }
-
-  .theme-button {
-    min-width: 100px;
-    padding: 6px 10px;
-  }
-
-  .options-container {
-    flex-direction: column;
-    gap: 5px;
-  }
-
-  input,
-  button,
-  select {
-    padding: 6px 10px;
-  }
-
-  .death-message {
-    font-size: 1.5em;
-  }
-}
-
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
-  body {
-    font-size: 1.1rem;
-  }
-
-  .container {
-    max-width: 540px;
-  }
-
-  .game-panel {
-    height: 450px;
-  }
-}
-
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
-  body {
-    font-size: 1.2rem;
-  }
-
-  .container {
-    max-width: 720px;
-    padding: 20px;
-  }
-
-  .theme-buttons {
-    flex-wrap: nowrap;
-  }
-
-  .game-panel {
-    height: 500px;
-  }
-}
-
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {
-  .container {
-    max-width: 800px;
-  }
-
-  .theme-buttons {
-    gap: 15px;
-  }
-
-  .option-button {
-    min-width: 150px;
-  }
-}
-
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {
-  body {
-    font-size: 1.3rem;
-  }
-
-  .container {
-    max-width: 1000px;
-  }
-
-  .game-panel {
-    height: 550px;
-  }
 }
