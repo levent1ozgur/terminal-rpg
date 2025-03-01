@@ -49,12 +49,12 @@ validateApiKeyButton.addEventListener("click", async () => {
   const apiKey = apiKeyInput.value.trim();
   if (!apiKey) {
     apiKeyStatus.textContent = "Please enter an API key.";
-    apiKeyStatus.style.color = "#f00";
+    apiKeyStatus.style.color = "#991f36";
     return;
   }
   loadingIndicator.style.display = "block";
   apiKeyStatus.textContent = "Validating key...";
-  apiKeyStatus.style.color = "#0f0";
+  apiKeyStatus.style.color = "#991f36";
   try {
     const response = await fetch("https://openrouter.ai/api/v1/auth/key", {
       method: "GET",
@@ -73,11 +73,11 @@ validateApiKeyButton.addEventListener("click", async () => {
       themeSelector.style.display = "block";
     } else {
       apiKeyStatus.textContent = "Invalid API key. Please try again.";
-      apiKeyStatus.style.color = "#f00";
+      apiKeyStatus.style.color = "#991f36";
     }
   } catch (error) {
     apiKeyStatus.textContent = "Error validating API key: " + error.message;
-    apiKeyStatus.style.color = "#f00";
+    apiKeyStatus.style.color = "#991f36";
   } finally {
     loadingIndicator.style.display = "none";
   }
@@ -333,4 +333,3 @@ window.addEventListener("DOMContentLoaded", () => {
   }
   updateSaveControlsVisibility(false);
 });
-
