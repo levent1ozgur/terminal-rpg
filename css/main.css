@@ -1,6 +1,7 @@
 /* Terminal aesthetic styling */
 
 body {
+  position: relative;
   background-color: #18181b;
   color: #f1f0ef;
   font-family: Courier, Lucida Sans Typewriter, Lucida Typewriter, monospace;
@@ -10,7 +11,36 @@ body {
   padding: 20px;
   line-height: 1.5;
 }
+/* Language Switch */
+.language-switch {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  gap: 5px;
+}
 
+.lang-button {
+  padding: 5px 10px;
+  font-size: 0.9em;
+  background-color: transparent;
+  border: 1px solid #991f36;
+  color: #f1f0ef;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.lang-button:hover {
+  background-color: #991f36;
+  box-shadow: 0 0 5px #991f36;
+}
+
+.lang-button.active {
+  background-color: #991f36;
+  border-color: #991f36;
+  cursor: default;
+}
 .container {
   max-width: 800px;
   margin: 0 auto;
@@ -62,7 +92,7 @@ select {
   border: 1px solid #f1f0ef;
   padding: 8px 15px;
   margin: 5px 0;
-  font-family: Courier, Lucida Sans Typewriter, Lucida Typewriter, monospace;
+  font-family: "Courier New", monospace;
 }
 
 button {
