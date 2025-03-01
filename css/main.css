@@ -1,0 +1,184 @@
+
+/* Terminal aesthetic styling */
+body {
+  background-color: #000;
+  color: #0f0;
+  font-family: "Courier New", monospace;
+  margin: 0;
+  padding: 20px;
+  line-height: 1.5;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1,
+h2,
+h3 {
+  color: #0f0;
+  text-shadow: 0 0 5px #0f0;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #0f0;
+  padding-bottom: 10px;
+}
+
+.setup-panel {
+  margin-bottom: 30px;
+}
+
+.game-panel {
+  display: none;
+  height: 500px;
+  overflow-y: auto;
+  border: 1px solid #0f0;
+  padding: 15px;
+  margin-bottom: 20px;
+  background-color: rgba(0, 50, 0, 0.1);
+}
+
+.input-panel {
+  display: none;
+  margin-top: 10px;
+}
+
+input,
+button,
+select {
+  background-color: #000;
+  color: #0f0;
+  border: 1px solid #0f0;
+  padding: 8px 15px;
+  margin: 5px 0;
+  font-family: "Courier New", monospace;
+}
+
+button {
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+button:hover {
+  background-color: #030;
+  box-shadow: 0 0 10px #0f0;
+}
+
+.api-key-container {
+  margin-bottom: 20px;
+}
+
+#apiKey {
+  width: 100%;
+}
+
+.theme-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.theme-button {
+  flex: 1;
+  min-width: 120px;
+}
+
+.options-container {
+  display: flex;
+  gap: 5px;
+}
+
+.option-button {
+  flex: 1;
+}
+
+.narrative {
+  margin-bottom: 15px;
+  border-left: 3px solid #0f0;
+  padding-left: 10px;
+}
+
+.user-input {
+  color: #ff9;
+  font-style: italic;
+}
+
+.stats {
+  border-top: 1px dashed #0f0;
+  margin-top: 15px;
+  padding-top: 10px;
+  font-size: 0.9em;
+}
+
+.blink {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+.loading {
+  text-align: center;
+  padding: 20px;
+  display: none;
+}
+
+.save-controls {
+  margin: 20px 0;
+  padding: 10px;
+  border: 1px dashed #0f0;
+}
+
+#died-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 100;
+}
+
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  padding: 20px;
+  background-color: #000;
+  border: 2px solid #f00;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 20px #f00;
+  }
+
+  50% {
+    box-shadow: 0 0 40px #f00;
+  }
+}
+
+.death-message {
+  color: #f00;
+  font-size: 2em;
+  margin-bottom: 20px;
+}

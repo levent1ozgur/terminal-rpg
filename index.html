@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terminal RPG - AI Text-Based Adventure Game</title>
+  <meta name="description" content="Play Terminal RPG, a free AI-powered text-based adventure game in your browser. Choose your theme and embark on a unique single-player RPG experience!">
+  <meta name="keywords" content="terminal rpg, text rpg, browser rpg, ai rpg, ai adventure game, text adventure game, free rpg, online rpg, single player rpg, openrouter api rpg">
+  <meta name="author" content="Levent Özgür">
+  <link rel="canonical" href="https://terminal-rpg.netlify.app/">
+  <meta name="robots" content="index, follow">
+
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="icon" type="image/x-icon" href="css/icon.favicon">
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Terminal RPG",
+      "url": "https://terminal-rpg.netlify.app/",
+      "description": "Terminal RPG is an AI-powered text-based adventure game playable directly in your browser. Explore various themes and embark on countless unique single-player RPG adventures.",
+      "applicationCategory": "GameApplication",
+      "operatingSystem": "Browser",
+      "author": {
+        "@type": "Person",
+        "name": "Levent Özgür"
+      }
+    }
+  </script>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="header">
+      <h1>>> Terminal RPG <span class="blink">_</span></h1>
+      <p>A text-based adventure powered by AI</p>
+    </div>
+
+    <!-- Setup Panel for API key and theme selection -->
+    <div class="setup-panel" id="setupPanel">
+      <div class="api-key-container">
+        <h2>> Authentication</h2>
+        <p>Enter your OpenRouter API key to begin:</p>
+        <input type="password" id="apiKey" placeholder="sk-or-...">
+        <button id="validateApiKey">Validate Key</button>
+        <p id="apiKeyStatus"></p>
+      </div>
+
+      <div id="themeSelector" style="display: none;">
+        <h2>> Select Adventure Theme</h2>
+        <div class="theme-buttons">
+          <button class="theme-button" data-theme="fantasy">Fantasy World</button>
+          <button class="theme-button" data-theme="scifi">Space Explorer</button>
+          <button class="theme-button" data-theme="cyberpunk">Cyberpunk City</button>
+          <button class="theme-button" data-theme="horror">Haunted Mansion</button>
+          <button class="theme-button" data-theme="postapocalyptic">Post-Apocalyptic Wasteland</button>
+          <button class="theme-button" data-theme="steampunk">Steampunk Sky Empire</button>
+          <button class="theme-button" data-theme="pirate">Pirate's Cove</button>
+          <button class="theme-button" data-theme="wildwest">Wild West Frontier</button>
+          <button class="theme-button" data-theme="superhero">Superhero Metropolis</button>
+          <button class="theme-button" data-theme="mythology">Mythological Odyssey</button>
+          <button class="theme-button" data-theme="zombie">Zombie Outbreak</button>
+          <button class="theme-button" data-theme="noir">Noir Detective</button>
+          <button class="theme-button" data-theme="fairytale">Enchanted Fairy Tale</button>
+          <button class="theme-button" data-theme="prehistoric">Prehistoric Jungle</button>
+          <button class="theme-button" data-theme="timetravel">Time Travel Paradox</button>
+          <button class="theme-button" data-theme="alien">Alien Planet</button>
+          <button class="theme-button" data-theme="underwater">Underwater Abyss</button>
+          <button class="theme-button" data-theme="virtualreality">Virtual Reality Sim</button>
+          <button class="theme-button" data-theme="dystopian">Dystopian Megacity</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Game Panel -->
+    <div class="game-panel" id="gamePanel">
+      <!-- Game content will be dynamically inserted here -->
+    </div>
+
+    <!-- Loading Indicator -->
+    <div class="loading" id="loadingIndicator">
+      <p>Processing<span class="blink">...</span></p>
+    </div>
+
+    <!-- Input Panel -->
+    <div class="input-panel" id="inputPanel">
+      <div class="options-container" id="optionsContainer">
+        <!-- Option buttons will be inserted here -->
+      </div>
+    </div>
+
+    <!-- Save/Load Controls -->
+    <div class="save-controls">
+      <h2>> Save/Load Game</h2>
+      <button id="exportGame">Export Game</button>
+      <button id="importGame">Import Game</button>
+      <input type="file" id="importFile" style="display: none;" accept="application/json">
+    </div>
+    <footer id="footer">
+      © 2025 <a href="https://terminal-rpg.netlify.app/">Terminal RPG</a> by
+      <a href="https://github.com/levent1ozgur" target="_blank">Levent Özgür</a> All rights reserved.
+    </footer>
+  </div>
+
+  <!-- Death Modal -->
+  <div id="died-modal">
+    <div class="modal-content">
+      <div class="death-message">YOU DIED</div>
+      <p>Your journey has come to an end.</p>
+      <button id="newGameButton">Start New Adventure</button>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="js/main.js"></script>
+
+</body>
+
+</html>
