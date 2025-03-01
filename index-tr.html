@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terminal RPG - AI Destekli Metin Tabanlı Macera Oyunu</title>
+  <meta name="description" content="Terminal RPG'yi tarayıcınızda ücretsiz oynayın. Yapay zeka destekli metin tabanlı macera oyununda temanızı seçin ve benzersiz tek oyunculu RPG deneyimine başlayın!">
+  <meta name="keywords" content="terminal rpg, metin rpg, tarayıcı rpg, ai rpg, ai macera oyunu, metin macera oyunu, ücretsiz rpg, çevrimiçi rpg, tek oyunculu rpg, openrouter api rpg">
+  <meta name="author" content="Levent Özgür">
+  <link rel="canonical" href="https://terminal-rpg.netlify.app/">
+  <meta name="robots" content="index, follow">
+
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="icon" type="image/x-icon" href="css/icon.favicon">
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Terminal RPG",
+      "url": "https://terminal-rpg.netlify.app/",
+      "description": "Terminal RPG, tarayıcınızda oynayabileceğiniz yapay zeka destekli metin tabanlı bir macera oyunudur. Çeşitli temaları keşfedin ve sayısız benzersiz tek oyunculu RPG macerasına atılın.",
+      "applicationCategory": "GameApplication",
+      "operatingSystem": "Browser",
+      "author": {
+        "@type": "Person",
+        "name": "Levent Özgür"
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <div class="language-switch">
+    <button class="lang-button" data-lang="en" href="index.html">EN</button>
+    <button class="lang-button active" data-lang="tr" href="index-tr.html">TR</button>
+  </div>
+
+  <div class="container">
+    <div class="header">
+      <img src="https://raw.githubusercontent.com/levent1ozgur/bazioneriler/refs/heads/main/css/favicon.png" alt="Terminal RPG - Logo" style="width:50px; height:50px;">
+      <h1> >> Terminal RPG <span class="blink">_</span></h1>
+      <p>Yapay zeka destekli metin tabanlı macera</p>
+    </div>
+
+    <!-- Setup Panel for API key and theme selection -->
+    <div class="setup-panel" id="setupPanel">
+      <div class="api-key-container">
+        <h2>> Kimlik Doğrulama</h2>
+        <p>Başlamak için OpenRouter API anahtarınızı girin:</p>
+        <input type="password" id="apiKey" placeholder="sk-or-...">
+        <button id="validateApiKey">Anahtarı Doğrula</button>
+        <p id="apiKeyStatus"></p>
+      </div>
+
+      <div id="themeSelector" style="display: none;">
+        <h2>> Macera Teması Seçin</h2>
+        <div class="theme-buttons">
+          <button class="theme-button" data-theme="fantasy">Fantazi Dünyası</button>
+          <button class="theme-button" data-theme="scifi">Uzay Kaşifi</button>
+          <button class="theme-button" data-theme="cyberpunk">Cyberpunk Şehri</button>
+          <button class="theme-button" data-theme="horror">Perili Köşk</button>
+          <button class="theme-button" data-theme="postapocalyptic">Kıyamet Sonrası Çorak Topraklar</button>
+          <button class="theme-button" data-theme="steampunk">Steampunk Gökyüzü İmparatorluğu</button>
+          <button class="theme-button" data-theme="pirate">Korsan Koyu</button>
+          <button class="theme-button" data-theme="wildwest">Vahşi Batı Sınırı</button>
+          <button class="theme-button" data-theme="superhero">Süper Kahraman Metropolü</button>
+          <button class="theme-button" data-theme="mythology">Mitolojik Destan</button>
+          <button class="theme-button" data-theme="zombie">Zombi Salgını</button>
+          <button class="theme-button" data-theme="noir">Noir Dedektif</button>
+          <button class="theme-button" data-theme="fairytale">Büyülü Peri Masalı</button>
+          <button class="theme-button" data-theme="prehistoric">Tarih Öncesi Orman</button>
+          <button class="theme-button" data-theme="timetravel">Zaman Yolculuğu Paradoksu</button>
+          <button class="theme-button" data-theme="alien">Uzaylı Gezegeni</button>
+          <button class="theme-button" data-theme="underwater">Su Altı Uçurumu</button>
+          <button class="theme-button" data-theme="virtualreality">Sanal Gerçeklik Simülasyonu</button>
+          <button class="theme-button" data-theme="dystopian">Distopik Megakent</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Game Panel -->
+    <div class="game-panel" id="gamePanel">
+      <!-- Game content will be dynamically inserted here -->
+    </div>
+
+    <!-- Loading Indicator -->
+    <div class="loading" id="loadingIndicator">
+      <p>İşleniyor<span class="blink">...</span></p>
+    </div>
+
+    <!-- Input Panel -->
+    <div class="input-panel" id="inputPanel">
+      <div class="options-container" id="optionsContainer">
+        <!-- Option buttons will be inserted here -->
+      </div>
+    </div>
+
+    <!-- Save/Load Controls -->
+    <div class="save-controls">
+      <h2>> Oyunu Kaydet/Yükle</h2>
+      <button id="exportGame">Oyunu Dışa Aktar</button>
+      <button id="importGame">Oyunu İçe Aktar</button>
+      <input type="file" id="importFile" style="display: none;" accept="application/json">
+    </div>
+    <footer id="footer">
+      © 2025 <a href="https://terminal-rpg.netlify.app/">Terminal RPG</a> |
+      <a href="https://github.com/levent1ozgur" target="_blank">Levent Özgür</a> tarafından geliştirilmiştir. Tüm hakları saklıdır.
+    </footer>
+  </div>
+
+  <!-- Death Modal -->
+  <div id="died-modal">
+    <div class="modal-content">
+      <div class="death-message">ÖLDÜNÜZ</div>
+      <p>Yolculuğunuz sona erdi.</p>
+      <button id="newGameButton">Yeni Macera Başlat</button>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="js/main-tr.js"></script>
+
+</body>
+
+</html>
