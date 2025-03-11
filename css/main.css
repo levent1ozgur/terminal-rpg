@@ -1,162 +1,181 @@
-/* Terminal aesthetic styling */
+:root {
+  --bg: #18181b;
+  --text: #00fe1a;
+  --accent: #fff;
+}
 
-body {
-  background-color: #18181b;
-  color: #f1f0ef;
-  font-family: Courier, Lucida Sans Typewriter, Lucida Typewriter, monospace;
-  font-weight: 500;
-  font-size: 1.2rem;
+/* Reset and Base Styles */
+* {
   margin: 0;
-  padding: 20px;
-  line-height: 1.5;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Language Switch */
-.language-switch {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  z-index: 1000;
+body,
+html {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  font-family: Courier, Lucida Sans Typewriter, Lucida Typewriter, monospace;
+  font-weight: 600;
+  letter-spacing: 1px;
+  background: radial-gradient(ellipse at center, #000 50%, #003d02 100%);
+  background-size: 100% 4px;
+  background-repeat: repeat-y;
+  opacity: 0.9;
+  color: var(--text);
+}
+
+/* Terminal Window */
+.terminal-window {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   display: flex;
-  gap: 5px;
+  flex-direction: column;
+  background-color: var(--bg);
+  text-shadow: 0px 0px 10px #ffffff;
+  opacity: 0.6;
 }
 
-.lang-button {
-  padding: 5px 10px;
-  font-size: 0.9em;
-  background-color: transparent;
-  border: 1px solid #991f36;
-  color: #f1f0ef;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.lang-button:hover {
-  background-color: #991f36;
-  box-shadow: 0 0 5px #991f36;
-}
-
-.lang-button.active {
-  background-color: #991f36;
-  border-color: #991f36;
-  cursor: default;
-}
-
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-h1 {
-  color: #991f36;
-  text-shadow: 0 0 5px #991f36;
-}
-
-h2,
-h3 {
-  color: #f1f0ef;
-  text-shadow: 0 0 5px #f1f0ef;
-}
-
-.header {
-  text-align: center;
-  margin-bottom: 30px;
-  border-bottom: 1px solid #f1f0ef;
-  padding-bottom: 10px;
-}
-
-.setup-panel {
-  margin-bottom: 30px;
-}
-
-.game-panel {
-  display: none;
-  height: 500px;
+/* Terminal Content */
+.terminal-content {
+  flex-grow: 1;
   overflow-y: auto;
-  border: 1px solid #f1f0ef;
-  padding: 15px;
-  margin-bottom: 20px;
-  background-color: #18181b;
+  padding: 10px;
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  font-size: 16px;
+  margin-bottom: 60px; /* Space for the fixed input container */
 }
 
-.input-panel {
-  display: none;
+/* Startup Info */
+.startup-info {
+  margin-bottom: 20px;
+  color: var(--text);
+}
+
+.startup-info a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.startup-info em {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.author,
+.title {
+  color: var(--accent);
+}
+
+/* Theme List Styling */
+.theme-list {
   margin-top: 10px;
 }
 
-input,
-button,
-select {
-  background-color: #18181b;
-  color: #f1f0ef;
-  border: 1px solid #f1f0ef;
-  padding: 8px 15px;
-  margin: 5px 0;
-  font-family: Courier, Lucida Sans Typewriter, Lucida Typewriter, monospace;
+.theme-list ol {
+  padding-left: 30px;
 }
 
-button {
+.theme-list li {
+  margin-bottom: 5px;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: color 0.3s ease;
 }
 
-button:hover {
-  background-color: #991f36;
-  box-shadow: 0 0 10px #f1f0ef;
+.theme-list li:hover {
+  color: var(--text);
 }
 
-.api-key-container {
-  margin-bottom: 20px;
-}
-
-#apiKey {
-  width: 50%;
-}
-
-.theme-buttons {
+/* Input Area */
+.terminal-input-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 20px;
+  align-items: center;
+  padding: 15px;
+  border-top: 1px solid var(--text);
+  backdrop-filter: blur(5px);
+  z-index: 10;
 }
 
-.theme-button {
-  flex: 1;
-  min-width: 120px;
+.terminal-prompt {
+  color: var(--text);
+  margin-right: 10px;
+  white-space: nowrap;
+  font-size: 18px;
 }
 
-.options-container {
-  display: flex;
-  gap: 5px;
+.terminal-input {
+  background: none;
+  border: none;
+  color: var(--text);
+  font-family: Courier, Lucida Sans Typewriter, Lucida Typewriter, monospace;
+  font-size: 16px;
+  outline: none;
+  width: 100%;
+  padding: 5px 0;
 }
 
-.option-button {
-  flex: 1;
+/* Game Output Styling */
+.game-output {
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
-.narrative {
+/* Distinct styling for narrative text */
+.narrative-text {
+  color: var(--text);
+  padding: 10px;
   margin-bottom: 15px;
-  border-left: 3px solid #991f36;
-  padding-left: 10px;
+  border-left: 3px solid var(--text);
 }
 
-.user-input {
-  color: #991f36;
-  font-style: italic;
+/* Distinct styling for options */
+.options-container {
+  margin: 15px 0;
+  padding: 10px;
+  border-left: 3px solid var(--accent);
 }
 
-.stats {
-  border-top: 1px dashed #f1f0ef;
-  margin-top: 15px;
-  padding-top: 10px;
+.option-item {
+  color: var(--accent);
+  cursor: pointer;
+  padding: 5px;
+  transition: all 0.2s ease;
+  border-radius: 3px;
+}
+
+.option-item:hover {
+  padding-left: 8px;
+}
+
+/* Distinct styling for stats */
+.stats-container {
+  color: var(--accent);
+  margin: 15px 0;
+  padding: 8px 10px;
+  border-left: 3px solid var(--accent);
   font-size: 0.9em;
 }
 
-.blink {
-  animation: blink 1s infinite;
+/* User command styling */
+.user-command {
+  color: var(--accent);
+  font-weight: bold;
+  margin: 10px 0;
+  padding-left: 10px;
+  border-left: 3px solid var(--accent);
 }
 
+/* Blinking Cursor Effect */
 @keyframes blink {
   0%,
   100% {
@@ -167,61 +186,91 @@ button:hover {
   }
 }
 
-.loading {
-  text-align: center;
-  padding: 20px;
-  display: none;
+.terminal-prompt::after {
+  content: "_";
+  animation: blink 1s infinite;
 }
 
-.save-controls {
-  margin: 20px 0;
-  padding: 10px;
-  border: 1px dashed #f1f0ef;
-}
-
-#died-modal {
-  display: none;
+/* Loading Spinner */
+.loading-spinner {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(24, 24, 27, 0.9);
-  z-index: 100;
-}
-
-.modal-content {
-  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  text-align: center;
+  background-color: var(--bg);
   padding: 20px;
-  background-color: #18181b;
-  border: 2px solid #991f36;
-  animation: pulse 2s infinite;
+  border-radius: 10px;
+  border: 1px solid var(--text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1000;
 }
 
-@keyframes pulse {
-  0%,
+.loading-spinner p {
+  color: var(--text);
+  margin-top: 10px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
   100% {
-    box-shadow: 0 0 20px #991f36;
-  }
-  50% {
-    box-shadow: 0 0 40px #991f36;
+    transform: rotate(360deg);
   }
 }
 
-.death-message {
-  color: #991f36;
-  font-size: 2em;
-  margin-bottom: 20px;
+.spinner {
+  border: 4px solid var(--bg);
+  border-radius: 50%;
+  border-top: 4px solid var(--text);
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
 }
 
-footer {
-  text-align: center;
+/* Screen reader only elements */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
-footer a {
-  color: #991f36;
+/* Utility Classes */
+.hidden {
+  display: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .terminal-content {
+    font-size: 14px;
+    margin-bottom: 50px;
+  }
+
+  .terminal-input {
+    font-size: 14px;
+  }
+
+  .terminal-input-container {
+    padding: 10px;
+  }
+}
+
+/* Specific styles for mobile devices */
+@media (max-width: 480px) {
+  .terminal-content {
+    padding: 8px;
+  }
+
+  .terminal-prompt {
+    font-size: 16px;
+  }
 }
